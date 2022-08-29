@@ -5,4 +5,4 @@ Pillow==9.2.0
 sqlparse==0.4.2
 tzdata==2022.2
 
-#Activar entorno -> ir a la raiz del proyecto para inicializar.
+#Activar entorno -> ir a la raiz del proyecto para inicializar...
