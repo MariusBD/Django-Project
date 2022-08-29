@@ -1,0 +1,65 @@
+{% extends 'WebProjectApp/home.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+{% block content %} 
+
+<div class="container">
+    <div style="float: right;">
+        {% if request.user.is_authenticated %} <!--si usuario login-->
+        {% include "carro/carro.html" %}
+        {% else %}
+
+        <div class="alert alert-primary" role="alert">
+            Loguea para ver el carro
+          </div>
+
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="container">
+
+    <div class="row">
+{% for producto in productos %}
+
+        <div class="col-md-3">
+
+            <div class="card" style="width: 100%; margin: 7px 7px;">
+                <img src = "{{producto.imagen.url}}" class="card-img-top mx-auto d-block" style="width: 100px; height:100px; padding-top: 10px;">
+            <div class="card-body text-center">
+
+                <h8 class="card-title " style="font-weight: bold;">{{producto.nombre}}</h8>
+                <p class="card-text">{{producto.precio}}&nbsp;€</p>
+
+            </div><!--cierre card body-->
+
+            <div class="card-footer text-center">
+                <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-primary">Añadir</a>
+            </div>
+            </div>
+        </div> <!--fin col-->
+
+
+ {% endfor %}
+
+    </div><!--fin row-->
+</div> <!--fin container-->
+{% endblock %}
+
+
+
+<body>
+
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'WebProjectApp/home.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    {% block content %}
+    {% for post in posts %}
+
+    {% endfor %}
+    {% for post in posts %}
+    <div class="container ">
+      <div class="row">
+        <div class="col">
+          <h2 style="float: left; color:black;">{{post.titulo}}</h2>
+          <h5 style="color:rgb(175, 93, 93); float:left;">{{post.created}}</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="{{post.imagen.url}}" class="rounded mx-auto d-block" width="400" height="250"  style="margin-bottom: 10px; float: left;">
+          </div>
+          <div class="col">
+            <p style="color: black; font-size: large; float: left;">{{post.contenido}}</p>
+          </div>
+          <div class="row">
+            <p style="color: black; font-size: large;">{{categoria.nombre}}</p>
+            <h6>Autor:{{post.autor}}</h6>
+            {% for categoria in post.categorias.all %} 
+            <a style="color: black; float: left; text-decoration: none;" href="{% url 'categoria' categoria.id %}  "> Categoria: <strong>{{categoria}}</strong></a>
+          {% endfor %}
+          <div style="background-color: blue; height:3px;"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+{% endfor %}
+
+    {% endblock %}
+    
+</body>
+</html>

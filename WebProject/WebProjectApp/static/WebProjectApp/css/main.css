@@ -1,0 +1,44 @@
+
+/*Estilo contenido central*/
+
+#content{
+    width: 1212px;
+    min-height: 930px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+.box{
+    background: rgb(186, 199, 225);
+    width: 95%;
+    min-height: 930px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h2{
+    text-align: center;
+    margin-top: 10px;
+}
+
+h3{
+    text-align: left;
+}
+
+.nav-item{
+    text-align: center;
+}
+
+.dimension{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+.dimension2{
+    width: 600px;
+    height: 250px;
+    object-fit: cover;
+}
+
+

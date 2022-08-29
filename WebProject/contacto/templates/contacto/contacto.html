@@ -1,0 +1,36 @@
+{% extends 'WebProjectApp/home.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+    {% block content %}
+    {% if 'correcto' in request.GET %}
+    <h6 style="text-align: center; color: green;">INFORMACION ENVIADA CON EXITO</h6>
+
+    {% endif %}
+    <div class="container mt-3 d-flex justify-content-center rounded" style="background-color: whitesmoke; width: 50%; margin: auto; padding-top: 5px;">
+
+
+        <!--CSRF agrega un campo oculto en el formulario en el cual incluye un codigo clave de seguridad,sin esto no envia el form-->
+        <form action="#" method="POST" > {% csrf_token %}
+
+           <table class="rounded">
+            <h2>Contactanos</h2>
+            {{form.as_table}}
+        </table>
+        <div class="d-flex justify-content-center ">
+            <button style="margin-bottom:10px;" type="submit" class="btn btn-primary">Enviar</button>
+        </div>   
+        </form> 
+      </div>
+
+    {% endblock %}
+</body>
+</html>

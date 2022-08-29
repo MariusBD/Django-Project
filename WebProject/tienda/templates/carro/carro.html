@@ -1,0 +1,54 @@
+
+
+<table class="table table-striped-columns table-hover" style="color:black;">
+    <thead>
+        <tr>
+            <th colspan="3" class="text-center">
+                Carro compra
+
+            </th>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--si hay elementos en el carro de la peticion de esta session-->
+        {% if request.session.carro.items %}
+            {% for key,value in request.session.carro.items %}
+                <tr class="text-center">
+
+                    <td>{{value.nombre}}</td> <!--propiedad que viene del diccionario-->
+                    <td>{{value.cantidad}}</td>
+                    <td>
+                        <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+                        <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-danger">-</a><br/>
+
+                        {{value.precio|floatformat:2}} <!-- 2 decimales -->
+                    </td> 
+                    
+                </tr>
+            {% endfor %}
+        {% else %} <!--si no hay productos-->
+            <tr>
+                <td colspan="3">
+                    <div class="alert alert-danger text-center">
+                        No hay productos que mostrar
+                    </div>
+                </td>
+            </tr>
+        
+        {% endif %}
+    </tbody>
+    <tfoot> <!--importe total-->
+        <tr>
+            <td colspan="3">
+               <strong><p style="color: red;">Total: {{importe_total|floatformat:2}} €</p></strong>
+
+            </td>
+        </tr>
+    </tfoot>
+
+</table>
